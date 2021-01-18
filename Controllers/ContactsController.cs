@@ -20,7 +20,7 @@ namespace catalogv6.Controllers
             var contacts = db.Contacts.Include(c => c.Teacher);
             return View(contacts.ToList());
         }
-
+        [Authorize(Roles = "Teacher, Admin")]
         // GET: Contacts/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +35,7 @@ namespace catalogv6.Controllers
             }
             return View(contact);
         }
-
+        [Authorize(Roles = "Teacher, Admin")]
         // GET: Contacts/Create
         public ActionResult Create()
         {
@@ -46,6 +46,7 @@ namespace catalogv6.Controllers
         // POST: Contacts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TeacherId,PhoneNumber,Email")] Contact contact)
@@ -60,7 +61,7 @@ namespace catalogv6.Controllers
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "Name", contact.TeacherId);
             return View(contact);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Contacts/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -76,7 +77,7 @@ namespace catalogv6.Controllers
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "Name", contact.TeacherId);
             return View(contact);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Contacts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,7 +94,7 @@ namespace catalogv6.Controllers
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "Name", contact.TeacherId);
             return View(contact);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Contacts/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +109,7 @@ namespace catalogv6.Controllers
             }
             return View(contact);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

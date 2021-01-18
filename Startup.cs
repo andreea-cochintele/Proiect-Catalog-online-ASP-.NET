@@ -44,6 +44,15 @@ namespace catalogv6
                 var role = new IdentityRole();
                 role.Name = "Student";
                 roleManager.Create(role);
+
+                var user1 = new ApplicationUser();
+                user1.UserName = "student@student.com";
+                user1.Email = "student@student.com";
+                var studentCreated = userManager.Create(user1, "student1234.C");
+                if (studentCreated.Succeeded)
+                {
+                    userManager.AddToRole(user1.Id, "Student");
+                }
             }
 
             if (!roleManager.RoleExists("Teacher"))

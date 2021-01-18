@@ -34,13 +34,13 @@ namespace catalogv6.Controllers
             }
             return View(teacher);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Teachers/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Teachers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,7 +57,7 @@ namespace catalogv6.Controllers
 
             return View(teacher);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Teachers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -72,7 +72,7 @@ namespace catalogv6.Controllers
             }
             return View(teacher);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Teachers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -88,7 +88,7 @@ namespace catalogv6.Controllers
             }
             return View(teacher);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Teachers/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -103,7 +103,7 @@ namespace catalogv6.Controllers
             }
             return View(teacher);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Teachers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
