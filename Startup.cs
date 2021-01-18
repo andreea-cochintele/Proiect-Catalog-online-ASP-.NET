@@ -61,13 +61,13 @@ namespace catalogv6
                 role.Name = "Teacher";
                 roleManager.Create(role);
 
-                var user1 = new ApplicationUser();
-                user1.UserName = "teacher@teaher.com";
-                user1.Email = "teacher@teacher.com";
-                var teacherCreated = userManager.Create(user1, "teacher1234.C");
+                var user2 = new ApplicationUser();
+                user2.UserName = "teacher@teacher.com";
+                user2.Email = "teacher@teacher.com";
+                var teacherCreated = userManager.Create(user2, "teacher1234.C");
                 if (teacherCreated.Succeeded)
                 {
-                    userManager.AddToRole(user1.Id, "Teacher");
+                    userManager.AddToRole(user2.Id, "Teacher");
                 }
             }
         }
